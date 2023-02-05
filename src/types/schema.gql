@@ -1,0 +1,234 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ReasonType {
+  id: ID!
+  description: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type BudgetBoxCurrencyType {
+  value: Float!
+  currency: BudgetBoxCurrencies!
+}
+
+enum BudgetBoxCurrencies {
+  BRL
+  USD
+  EUR
+  JPY
+}
+
+type BudgetBoxType {
+  id: ID!
+  description: String!
+  balanceAvailable: BudgetBoxCurrencyType!
+  isPercentage: Boolean!
+  budgetPercentage: Float!
+  reasons: [ReasonType!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CurrencyType {
+  value: Float!
+  currency: TransactionCurrencies!
+}
+
+enum TransactionCurrencies {
+  BRL
+  USD
+  EUR
+  JPY
+}
+
+type TransactionCalculationType {
+  budgetBoxName: String!
+  budgetBoxId: ID!
+  currency: CurrencyType!
+}
+
+type BoxTransactionType {
+  id: ID!
+  userId: ID!
+  reason: String!
+  totalValue: CurrencyType!
+  paymentDate: DateTime!
+  transactionType: TransactionTypeEnum!
+  transactionStatus: TransactionStatusEnum!
+  transactionCalculations: [TransactionCalculationType!]!
+  note: String
+  attachment: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum TransactionTypeEnum {
+  ENTRADA
+  SAIDA
+  ESTORNO
+  TRANSFERENCIA
+}
+
+enum TransactionStatusEnum {
+  PENDENTE
+  CONCLUIDO
+  ESTORNADO
+}
+
+type JwtPayloadType {
+  token: String!
+}
+
+type UserAgentType {
+  name: String!
+  version: String!
+  os: String!
+  type: String!
+}
+
+type TermType {
+  ip: String!
+  acceptedAt: String!
+  userAgent: UserAgentType!
+}
+
+type UserType {
+  id: ID!
+  terms: [TermType!]
+  email: String!
+}
+
+type Query {
+  whoAmI: UserType
+  getBudgetBoxes: [BudgetBoxType!]!
+  getBudgetBoxById(GetBudgetBoxByIdInput: GetBudgetBoxByIdInput!): BudgetBoxType!
+  getTransactions: [BoxTransactionType!]!
+  getTransactionById(GetTransactionByIdInput: GetTransactionByIdInput!): BoxTransactionType!
+}
+
+input GetBudgetBoxByIdInput {
+  budgetBoxId: String!
+}
+
+input GetTransactionByIdInput {
+  transactionId: String!
+}
+
+type Mutation {
+  signup(SignupInput: SignupInput!): Boolean!
+  signin(SigninInput: SigninInput!): JwtPayloadType!
+  deleteUserAccount(DeleteUserAccountInput: DeleteUserAccountInput!): Boolean!
+  createBudgetBox(CreateBudgetBoxInput: CreateBudgetBoxInput!): Boolean!
+  addReasonToBudgetBox(AddReasonToBudgetBoxInput: AddReasonToBudgetBoxInput!): Boolean!
+  removeReasonFromBudgetBox(RemoveReasonFromBudgetBoxInput: RemoveReasonFromBudgetBoxInput!): Boolean!
+  changeReasonDescription(ChangeReasonDescriptionBoxInput: ChangeReasonDescriptionBoxInput!): Boolean!
+  changeBudgetPercentage(ChangeBudgetBoxPercentageInput: ChangeBudgetBoxPercentageInput!): Boolean!
+  changeBudgetName(ChangeBudgetBoxNameInput: ChangeBudgetBoxNameInput!): Boolean!
+  deleteBudgetBox(DeleteBudgetBoxInput: DeleteBudgetBoxInput!): Boolean!
+  percentageCapitalInflowPosting(PercentageCapitalInflowPostingInput: PercentageCapitalInflowPostingInput!): Boolean!
+  postingToBenefit(PostingToBenefitInput: PostingToBenefitInput!): Boolean!
+  createExpense(CreateExpenseInput: CreateExpenseInput!): Boolean!
+  transferBalance(BalanceTransferenceInput: BalanceTransferenceInput!): Boolean!
+}
+
+input SignupInput {
+  email: String!
+  password: String!
+  acceptedTerms: Boolean!
+}
+
+input SigninInput {
+  email: String!
+  password: String!
+}
+
+input DeleteUserAccountInput {
+  password: String!
+}
+
+input CreateBudgetBoxInput {
+  description: String!
+  isPercentage: Boolean!
+  budgetPercentage: Float!
+}
+
+input AddReasonToBudgetBoxInput {
+  reasonDescription: String!
+  budgetBoxId: String!
+}
+
+input RemoveReasonFromBudgetBoxInput {
+  reasonId: String!
+  budgetBoxId: String!
+}
+
+input ChangeReasonDescriptionBoxInput {
+  reasonDescription: String!
+  budgetBoxId: String!
+  reasonId: String!
+}
+
+input ChangeBudgetBoxPercentageInput {
+  budgetBoxId: String!
+  budgetPercentage: Float!
+}
+
+input ChangeBudgetBoxNameInput {
+  budgetBoxId: String!
+  description: String!
+}
+
+input DeleteBudgetBoxInput {
+  budgetBoxId: String!
+}
+
+input PercentageCapitalInflowPostingInput {
+  total: Float!
+  reason: String!
+  status: TransactionStatus!
+  paymentDate: DateTime
+  note: String
+  attachment: String
+}
+
+enum TransactionStatus {
+  PENDENTE
+  CONCLUIDO
+}
+
+input PostingToBenefitInput {
+  total: Float!
+  reason: String!
+  budgetBoxId: String!
+  status: TransactionStatus!
+  paymentDate: DateTime
+  note: String
+  attachment: String
+}
+
+input CreateExpenseInput {
+  total: Float!
+  reason: String!
+  budgetBoxId: String!
+  status: TransactionStatus!
+  paymentDate: DateTime
+  note: String
+  attachment: String
+}
+
+input BalanceTransferenceInput {
+  total: Float!
+  reason: String!
+  sourceBoxId: String!
+  destinationBoxId: String!
+  note: String
+  attachment: String
+}
