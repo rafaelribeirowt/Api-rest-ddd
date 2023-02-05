@@ -1,72 +1,11 @@
-# API - Controle Financeiro
-
-## Um projeto aplicando os principais conceitos de DDD
-
-Neste projeto financeiro para controle de finanças foi aplicado domain-driven-design
-
-### Documentação da Api
-
-Disponível [no link](https://finance-api-ddd.herokuapp.com/doc)
-
-### Como rodar esse projeto
-
-Para rodar o projeto local em sua máquina utilizando docker
-
-- Realize o clone deste projeto para sua máquina.
-
-```sh
- 
- $ git clone https://github.com/4lessandrodev/finance-project-ddd.git
-
-```
-
-- Crie seu arquivo `.env` utilizando como exemplo o arquivo `.env.example`
-
-- Execute o docker
-
-```sh
- 
- $ docker-compose up -d
-
-```
-
-- Instale as dependências 
-
-```sh
- 
- $ yarn
-
-```
-
-- Execute o projeto 
-
-```sh
- 
- $ yarn start:dev
-
-```
-
-- Acesse a api em `http://localhost:3000/graphql`
-
-
-### Rodar os testes
-
-```sh
- 
- $ yarn test
-
-```
-
-### Cobertura de tests
-
-<img src="./readme/test-cov.png" alt="imagem" width="100%">
+# Controle Financeiro
 
 ### Requisitos
 
 Preciso de um sistema que gerencie minhas finanças.
 Entradas e Saídas de capital.
 
-    Eu faço a contabilidade de minhas finanças da seguinte forma:
+    Eu faço a contabilidade de minhas finaças da seguinte forma:
     Em uma planilha do excel tenho o controle de entradas e saídas de capital.
     Se é um recebimento de capital eu lanço como receita.
     Se é um pagamento de qualquer tipo de dívida eu lanço como despesa.
@@ -116,44 +55,6 @@ Entradas e Saídas de capital.
     Como usuário quero poder transferir um saldo de um caixa para outro.
     Como usuário eu quero poder identificar de maneira clara o saldo em cada caixa e o saldo total.
 
-### Linguagem Ubíqua
-
-- **Budget-Box:** São caixas financeiros, cada qual com seu objetivo. 
-Exemplo Caixa Financeiro de Educação, destinado a receber um percentual de receita que será investido em cursos, livros ou afins relacionado a educação.
-
-- **Income:** Entrada, Receita, valor monetário recebido, entrada de capital.
-
-- **Expenses:** Saída, Despesa, valor monetário pago, saída de capital.
-
-- **Transaction-Calculation:** Cálculo de um lançamento, seja entrada ou saída.
-Exemplo, todo lançamento de receita tem seu montante dividido percentualmente para cada caixa financeiro e este cálculo é denominado como transaction-calculation.
-
-- **User:** Refere-se ao usuário cadastrado na plataforma ao qual tem seus caixas financeiros cadastrados.
-
-- **Percentage-Budget-Box:** São caixas financeiros com uma divisão percentual, significa que ele recebe uma porcentagem de todo lançamento de receita.
-
-- **Benefit-Budget-Box:** São caixas financeiros que não recebem nenhum percentual de lançamento de receitas. A receita lançada para esse caixa é alocada 100% para o mesmo.
-
-- **Money-In:** Entrada de capital, quer dizer que o usuário está realizando uma transação de lançamento de receita, seja perceitual ou benefício.
-
-- **Money-Out:** Saída de capital, quer dizer que o usuário está realizando uma transação de lançamento de despesa em algum caixa financeiro.
-
-- **Reason:** Significa motivo, todo lançamento possui um motivo para estar sendo lançado, seja motivo de saída por aquisição de algum bem ou motivo de entrada como o recebimento de um salário.
-
-- **Term:** Termos de uso e política de privacidade.
-
-- **Attachment:** Anexo, comprovante de uma transação.
-
-- **Transaction-Note:** Observações de uma transação, seja uma nota ou uma observação.
-
-- **Transaction-Type:** Tipo de transação, ENTRADA (Money-In) ou SAÍDA (Money-Out)
-
-- **Balance:** Total de capital, Saldo de um caixa ou de uma transação.
-
-- **Amount:** Todal disponível, saldo total do usuário
-
-> Mais detalhes
-
 ### Vídeo demonstrativo da planilha
 
 [Link demonstrativo planilha](https://www.youtube.com/watch?v=VHBTOPMkRiE)
@@ -162,28 +63,13 @@ Exemplo, todo lançamento de receita tem seu montante dividido percentualmente p
 
 [Veja no Figma](https://www.figma.com/proto/szD8Gs6el1sBSCTcyjPtub/modelagem-controle-financeiro?node-id=21%3A1111&scaling=scale-down)
 
-<a href="https://www.figma.com/proto/szD8Gs6el1sBSCTcyjPtub/modelagem-controle-financeiro?node-id=21%3A1111&scaling=scale-down"><img src="./readme/wireframe.png" alt="imagem" width="100%"></a>
-
-## Demo animada
-
-Gif do protótipo feito no figma
-
-<a href="https://www.figma.com/proto/szD8Gs6el1sBSCTcyjPtub/modelagem-controle-financeiro?node-id=21%3A1111&scaling=scale-down"><img src="./readme/demo.gif" alt="imagem" width="100%"></a>
+![imagem](./readme/wireframe.png 'imagem')
 
 ## Event Storm
 
 [Veja no Figma](https://www.figma.com/proto/szD8Gs6el1sBSCTcyjPtub/modelagem-controle-financeiro?node-id=1%3A445&scaling=min-zoom)
 
-<a href="https://www.figma.com/proto/szD8Gs6el1sBSCTcyjPtub/modelagem-controle-financeiro?node-id=1%3A445&scaling=min-zoom"><img src="./readme/event-storm.png" alt="imagem" width="100%"></a>
-
-## Playlist Youtube
-
-O desenvolvimento deste projeto foi gravado e disponibilizado no youtube
-
-[Acesse no Youtube](https://www.youtube.com/watch?v=nhgBqKxFIiw&list=PLUxrX6EvA-2ZRQokZDXHp-uXQUFWmoaJ7)
-
-
-<a href="https://www.youtube.com/watch?v=nhgBqKxFIiw&list=PLUxrX6EvA-2ZRQokZDXHp-uXQUFWmoaJ7"><img src="./readme/youtube-icon.gif" alt="playlist youtube" width="100%"></a>
+![imagem](./readme/event-storm.png 'imagem')r
 
 ## Domain Driven Design
 
@@ -266,46 +152,16 @@ Arquivos padrões em typescript para iniciar um projeto usando DDD. Inspirado no
 
 DDD não é uma arquitetura. O DDD (Domain Driven Design) é uma modelagem de software cujo objetivo é facilitar a implementação de regras e processos complexos, onde visa a divisão de responsabilidades por camadas e é independente da tecnologia utilizada. Ou seja, o DDD é uma filosofia voltado para o domínio do negócio.
 
+### Para arquitetura
+
+Deixo como sugestão a Arquitetura hexagonal
+
+[Saiba mais](https://br.sensedia.com/post/use-of-the-hexagonal-architecture-pattern)
+
+![imagem](./readme/arquitetura-hexagonal.jpg 'imagem')
+
 ### Padrão de Pastas
 
 Baseado na arquitetura hexagonal, sugestão de organização de pastas
 
-```sh
-  $ tree
-  .
-  ├── package.json
-  ├── README.md
-  └── src
-       ├── config
-       │    ├── main.ts    
-       │    └── env.ts 
-       │
-       └── modules
-            │ 
-            └── [module-name]
-                  │ 
-                  │── domain
-                  │     ├── value-objects
-                  │     ├── entities
-                  │     ├── aggregates
-                  │     ├── events
-                  │     ├── subscriptions
-                  │     ├── repo
-                  │     └── services
-                  │ 
-                  ├── application
-                  │     └── use-cases 
-                  │ 
-                  └── infra
-                        ├── models     
-                        ├── repo
-                        └── mappers 
-```
-
-### Arquitetura
-
-Deixo como sugestão a Arquitetura Limpa
-
-<a href="./readme/clean-architecture.pdf"><img src="./readme/arch-img.png" alt="imagem" width="100%"></a>
-
- > creditos da imagem em pdf [Junior Grossi](https://www.linkedin.com/in/juniorgrossi/)
+![imagem](./readme/organizacao-pastas.png 'imagem')
