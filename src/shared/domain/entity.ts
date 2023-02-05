@@ -1,28 +1,16 @@
-import { BaseDomainEntity, UniqueEntityID } from './index';
+import { UniqueEntityID } from './unique-entity-id';
 
 const isEntity = (v: any): v is Entity<any> => {
   return v instanceof Entity;
 };
 
-export abstract class Entity<T extends BaseDomainEntity> {
+export abstract class Entity<T> {
   protected readonly _id: UniqueEntityID;
-  protected readonly props: T;
+  public readonly props: T;
 
   constructor(props: T, id?: UniqueEntityID) {
     this._id = id ? id : new UniqueEntityID();
     this.props = props;
-  }
-
-  get createdAt(): Date {
-    return this.props.createdAt ?? new Date();
-  }
-
-  get updatedAt(): Date {
-    return this.props.updatedAt ?? new Date();
-  }
-
-  get isDeleted(): boolean {
-    return this.props.isDeleted ?? false;
   }
 
   public equals(object?: Entity<T>): boolean {
