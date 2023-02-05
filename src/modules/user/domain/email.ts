@@ -5,7 +5,7 @@ export interface EmailValueObjectProps {
   value: string;
 }
 
-export class EmailValueObject extends ValueObject<EmailValueObjectProps> {
+export class Email extends ValueObject<EmailValueObjectProps> {
   private constructor(props: EmailValueObjectProps) {
     super(props);
   }
@@ -14,13 +14,13 @@ export class EmailValueObject extends ValueObject<EmailValueObjectProps> {
     return this.props.value;
   }
 
-  public static create(email: string): Result<EmailValueObject> {
+  public static create(email: string): Result<Email> {
     const isValidEmail = isEmail(email);
     if (!isValidEmail) {
-      Result.fail<EmailValueObject>('Invalid Email');
+      Result.fail<Email>('Invalid Email');
     }
-    return Result.ok<EmailValueObject>(
-      new EmailValueObject({
+    return Result.ok<Email>(
+      new Email({
         value: email,
       }),
     );
