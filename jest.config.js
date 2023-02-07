@@ -13,6 +13,7 @@ module.exports = {
     '!<rootDir>/src/**/*env.ts',
     '!<rootDir>/src/Shared/*',
     '!<rootDir>/src/Shared/events/*',
+    '!<rootDir>/src/modules/*',
   ],
   coverageDirectory: 'coverage',
   coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
