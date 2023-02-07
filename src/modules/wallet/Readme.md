@@ -1,5 +1,5 @@
 # Wallet 
-
+```jason
 {
     idWallet: string,
     idUser: userId,
