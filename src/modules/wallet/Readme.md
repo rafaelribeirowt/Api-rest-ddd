@@ -1,9 +1,10 @@
-# Wallet 
-```jason
+# Wallet
+
+```json
 {
-    idWallet: string,
-    idUser: userId,
-    description: walletDescription,
-    balanceAvaliable: number,
-    transactionsIds: ["uuid", "uuid"]    
+  "idWallet": string,
+  "idUser": userId,
+  "description": walletDescription,
+  "balanceAvaliable": number
 }
+```
