@@ -16,13 +16,15 @@ export class UserEmail extends ValueObject<EmailValueObjectProps> {
 
   public static create(email: string): Result<UserEmail> {
     const isValidEmail = isEmail(email);
+    const emailLowCase = email.toLowerCase();
     if (!isValidEmail) {
-      Result.fail<UserEmail>('Invalid Email');
+      return Result.fail<UserEmail>('Invalid Email');
+    } else {
+      return Result.ok<UserEmail>(
+        new UserEmail({
+          value: emailLowCase,
+        }),
+      );
     }
-    return Result.ok<UserEmail>(
-      new UserEmail({
-        value: email,
-      }),
-    );
   }
 }

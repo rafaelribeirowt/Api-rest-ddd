@@ -11,7 +11,7 @@ describe('userId.ts', () => {
     const userId = UserId.create(new UniqueEntityID('valid_id'));
     expect(userId.isSuccess).toBe(true);
     expect(userId.getResult().id.toValue()).toBe('valid_id');
-    console.log(userId.getResult().id);
+    
     
   });
 });

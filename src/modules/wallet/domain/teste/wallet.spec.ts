@@ -8,8 +8,6 @@ describe('wallet.ts', () => {
       IdUser: UserId.create().getResult(),
       balance: WalletBalance.create(5000).getResult(),
     });
-    console.log(wallet.getResult().IdUser);
-
     expect(wallet.isSuccess).toBe(true);
   });
 });

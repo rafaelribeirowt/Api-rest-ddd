@@ -1,7 +1,7 @@
 import { ValueObject, Result } from '../../../shared/domain';
 
 export interface UserNameProps {
-  name: string;
+  value: string;
 }
 
 export class UserName extends ValueObject<UserNameProps> {
@@ -9,20 +9,23 @@ export class UserName extends ValueObject<UserNameProps> {
     super(props);
   }
 
-  get name(): string {
-    return this.props.name;
+  get value(): string {
+    return this.props.value;
   }
 
-  public static create(name: string): Result<UserName> {
-    const validLength = name.length >= 15 && name.length <= 50;
-    const nameLowcase = name.toLowerCase();
+  public static create(value: string): Result<UserName> {
+    
+    const validLength = value.length >= 10 && value.length <= 30;
+    const nameLowcase = value.toLowerCase();
     if (!validLength) {
-      Result.fail<UserName>('min 10 char and max 50 char');
+    return Result.fail<UserName>('min 10 char and max 50 char');
     }
+    else 
+    {
     return Result.ok<UserName>(
       new UserName({
-        name: nameLowcase,
-      }),
-    );
+        value: nameLowcase,
+      })
+    )}
   }
 }

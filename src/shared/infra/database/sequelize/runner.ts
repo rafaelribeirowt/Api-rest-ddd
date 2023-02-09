@@ -1,4 +1,4 @@
-async function runner(promises) {
+async function runner(promises: any) {
   for (const command of promises) {
     try {
       await command();
@@ -31,11 +31,11 @@ async function runner(promises) {
           /**
            * Any other error
            */
-          console.log(err);
+          
           throw new Error(err);
         }
       } else {
-        console.log(err);
+        
         throw new Error(err);
       }
     }
