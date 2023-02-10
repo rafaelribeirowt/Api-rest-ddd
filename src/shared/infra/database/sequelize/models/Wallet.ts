@@ -8,10 +8,16 @@ export default (sequelize, DataTypes) => {
         allowNull: false,
         primaryKey: true,
       },
-      idIuser: {
-        type: DataTypes.STRING(250),
+      id_user: {
+        type: DataTypes.UUID,
         allowNull: false,
-        unique: true,
+        primaryKey: true,
+        references: {
+          model: "user",
+          key: "id",
+        },
+        onDelete: "cascade",
+        onUpdate: "cascade",
       },
       balance: {
         type: DataTypes.FLOAT,

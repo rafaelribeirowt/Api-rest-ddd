@@ -47,9 +47,14 @@ export default {
         },
         id_user: {
           type: Sequelize.UUID,
-          defaultValue: Sequelize.UUIDV4,
           allowNull: false,
-          unique: true,
+          primaryKey: true,
+          references: {
+            model: "user",
+            key: "id",
+          },
+          onDelete: "cascade",
+          onUpdate: "cascade",
         },
         balance: {
           type: Sequelize.FLOAT,

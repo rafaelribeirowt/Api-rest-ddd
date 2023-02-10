@@ -1,7 +1,7 @@
 import { User } from '../../domain/User';
 import { UserEmail } from '../../domain/userEmail';
 import { UserName } from '../../domain/userName';
-import { UserMapper } from '../../mapper/userMap';
+import { UserMapper } from '../../mapper/UserMapper';
 import { IUserRepo } from '../userRepo';
 
 export class sequelizeUserRepo implements IUserRepo {

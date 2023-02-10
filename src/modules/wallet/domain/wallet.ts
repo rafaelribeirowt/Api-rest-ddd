@@ -1,11 +1,10 @@
 import { AggregateRoot, Result, UniqueEntityID } from '../../../shared/domain';
 import { UserId } from '../../user/domain/userId';
-import { WalletBalance } from './walletBalance';
 
 
 export interface WalletProps {
-  IdUser: UserId;
-  balance: WalletBalance;
+  user: UserId;
+  balance?: number;
 }
 
 export class Wallet extends AggregateRoot<WalletProps> {
@@ -13,17 +12,20 @@ export class Wallet extends AggregateRoot<WalletProps> {
     super(props, id);
   }
 
-  get IdUser(): UserId {
-    return this.props.IdUser;
+  get user(): UserId {
+    return this.props.user;
   }
 
-  get balance(): WalletBalance {
+  get balance(): number {
     return this.props.balance;
   }
 
-
-
-  public static create(props: WalletProps,id?: UniqueEntityID,): Result<Wallet> {
-    return Result.ok<Wallet>(new Wallet(props, id));
+  public static create(
+    props: WalletProps,
+    id?: UniqueEntityID,
+  ): Result<Wallet> {
+    return Result.ok<Wallet>(
+      new Wallet({ ...props, balance: props.balance ? props.balance : 0 }, id),
+    );
   }
 }
